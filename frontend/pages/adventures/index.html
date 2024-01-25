@@ -83,7 +83,8 @@
                 </div>
             </div>
             <!-- Display Adventures cards -->
-            <div class="row" id="data"></div>
+            <div class="row" id="data">                    
+            </div>
         </div>
     </div>
     <!-- Footer -->
@@ -132,6 +133,8 @@
 
             //Applies filters on the adventures list
             let filteredAdventures = filterFunction(adventures, filters);
+
+            console.log(filteredAdventures)
 
             //Updates the filtered adventures list to the DOM
             addAdventureToDOM(filteredAdventures)

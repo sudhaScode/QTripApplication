@@ -17,7 +17,7 @@ async function fetchCities() {
   // TODO: MODULE_CITIES
   // 1. Fetch cities using the Backend API and return the data
   try {
-    const res = await fetch("http://3.110.210.213:8082/cities");
+    const res = await fetch(`${config.backendEndpoint}/cities`);
     let cities = await res.json();
     return cities;
   }
@@ -38,7 +38,7 @@ function addCityToDOM(id, city, description, image) {
 
   //link
   let link = document.createElement("a");
-  link.setAttribute("href", `adventures/?city=${id}`);
+  link.setAttribute("href", `pages/adventures/?city=${id}`);
   link.setAttribute('id',id)
   
   let tile = document.createElement("div");

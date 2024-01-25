@@ -5,21 +5,104 @@ import config from "../conf/index.js";
 function getCityFromURL(search) {
   // TODO: MODULE_ADVENTURES
   // 1. Extract the city id from the URL's Query Param and return it
-
+  const query = search
+  let path = query.split("=")
+  return path[1];
 }
 
 //Implementation of fetch call with a paramterized input based on city
 async function fetchAdventures(city) {
   // TODO: MODULE_ADVENTURES
   // 1. Fetch adventures using the Backend API and return the data
-
+  //let city = getCityFromURL(location.search)
+  try {
+    const response = await fetch(`${config.backendEndpoint}/adventures/?city=${city}`);
+    return response.json();
+  }
+  catch (error) {
+    return null;
+  }
 }
 
 //Implementation of DOM manipulation to add adventures for the given city from list of adventures
 function addAdventureToDOM(adventures) {
   // TODO: MODULE_ADVENTURES
   // 1. Populate the Adventure Cards and insert those details into the DOM
+  //const city = getCityFromURL(location.search);
+  //adventures = fetchAdventures(city);
+  let row = document.querySelector(".row");
 
+  // iterate through the adventures
+  console.log(Array.isArray(adventures))
+  adventures.forEach(obj => {
+    //console.log(obj)
+    let col = document.createElement("div");
+    col.setAttribute('class', "col-6 col-lg-3 mb-4")
+   
+
+    //link
+    let link = document.createElement("a");
+    link.setAttribute("href", `detail/?adventure=${obj.id}`);
+    link.setAttribute("id", `${obj.id}`)
+
+    //div  append to link 
+    let banner = document.createElement("div");
+    banner.setAttribute("class", "category-banner")
+    banner.innerText = `${obj.category}`;
+
+    //append image datils divs
+    let div = document.createElement("div");
+    div.setAttribute("class", "activity-card")
+
+    let img = document.createElement("img");
+    img.setAttribute("src", `${obj.image}`)
+
+    //text div
+    let text = document.createElement("div");
+    //text.setAttribute("class", "adventure-detail-card")
+
+    let textDiv = document.createElement("div");
+    textDiv.setAttribute('class', "info")
+    
+    textDiv.innerHTML=`
+    <ul>
+     <li>${obj.name}</li>
+     <li><span>&#8377;${obj.costPerHead}</span></li>
+    </ul
+    `
+   /*
+    //detail div
+    let name = document.createElement("p");
+    name.innerText = `${obj.name}`;
+    let price = document.createElement("p")
+    price.innerHTML= `<span>&#8377;${obj.costPerHead}</span>`
+    textDiv.append(name, price);
+*/
+
+    let textDiv1 = document.createElement("div");
+    textDiv1.setAttribute('class', "info")
+    
+    textDiv1.innerHTML=`
+    <ul>
+     <li>Duration</li>
+     <li>${obj.duration} Hours</li>
+    </ul
+    `/*
+    let duration = document.createElement("p");
+    duration.innerText = `Duration`;
+    let time = document.createElement("p")
+    time.innerText = `${obj.duration} Hours`;
+    textDiv1.append(duration, time);
+    */
+   text.append(textDiv, textDiv1)
+    //append image and detail to activity card div
+    div.append(banner,img, text);
+
+    link.append(div);
+    col.append(link);
+    console.log(col)
+    row.append(col);
+  });
 }
 
 //Implementation of filtering by duration which takes in a list of adventures, the lower bound and upper bound of duration and returns a filtered list of adventures.
