@@ -65,7 +65,7 @@
                     </div>
                     <!-- Category filter (select one or many) -->
                     <div class="filter-bar-tile d-flex align-items-center">
-                        <select class="form-control" name="category" id="category-select" onchange="selectCategory(event)">
+                        <select class="form-control" id="category-select" onchange="selectCategory(event)">
                             <option disabled selected value="">Add Category</option>
                             <option value="Cycling">Cycling Routes</option>
                             <option value="Hillside">Hillside Getaways</option>
@@ -83,8 +83,7 @@
                 </div>
             </div>
             <!-- Display Adventures cards -->
-            <div class="row" id="data">                    
-            </div>
+            <div class="row" id="data"></div>
         </div>
     </div>
     <!-- Footer -->
@@ -133,8 +132,6 @@
 
             //Applies filters on the adventures list
             let filteredAdventures = filterFunction(adventures, filters);
-
-            console.log(filteredAdventures)
 
             //Updates the filtered adventures list to the DOM
             addAdventureToDOM(filteredAdventures)
