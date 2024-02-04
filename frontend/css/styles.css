@@ -149,15 +149,17 @@ footer {
 }
 .info ul{
   display: flex;
-  flex-direction: row;
+  flex-direction:row;
   justify-content: space-between;
   list-style: none;
   margin-top: 1rem;
 
 }
 .info li{
-  margin-left: -20px;
-  margin-right: 20px;
+  margin-left: -30px;
+  margin-right: 30px;
+  padding-left:10px;
+  padding-right: 10px;
 }
 
 .activity-card-image {
@@ -212,6 +214,16 @@ footer {
   align-items: center;
   border-radius: 10px 0px 0px 10px;
   font-weight: bolder;
+}
+
+.badge button{
+  padding: 6px;
+  font-size: 10px;
+  border-radius: 20px;
+  border: 2px solid rgba(236, 148, 17, 0.705);
+  text-align: center;
+  background: none;
+
 }
 
 .reserve-button {
