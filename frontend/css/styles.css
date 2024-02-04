@@ -208,22 +208,12 @@ footer {
   right: 0;
   z-index: 1;
   margin-top: 16px;
-  margin-right: -20px;
+  margin-right: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px 0px 0px 10px;
   font-weight: bolder;
-}
-
-.badge button{
-  padding: 6px;
-  font-size: 10px;
-  border-radius: 20px;
-  border: 2px solid rgba(236, 148, 17, 0.705);
-  text-align: center;
-  background: none;
-
 }
 
 .reserve-button {
