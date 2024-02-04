@@ -26,7 +26,10 @@ footer {
   color: #999;
   position: absolute;
   bottom: 0;
+<<<<<<< HEAD
   text-align: center;
+=======
+>>>>>>> 13ea157302ae48d1eb3fd466abcd5e8c0fde7d8a
   /* width: 100%; */
   /* height: 2.5rem;   */
 }
@@ -75,7 +78,10 @@ footer {
   z-index: 1;
   text-transform: uppercase;
   letter-spacing: 2px;
+<<<<<<< HEAD
   text-align: center;
+=======
+>>>>>>> 13ea157302ae48d1eb3fd466abcd5e8c0fde7d8a
 }
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
@@ -147,6 +153,7 @@ footer {
   padding: 16px;
   /* margin: 8px; */
 }
+<<<<<<< HEAD
 .info ul{
   display: flex;
   flex-direction:row;
@@ -161,6 +168,8 @@ footer {
   padding-left:10px;
   padding-right: 10px;
 }
+=======
+>>>>>>> 13ea157302ae48d1eb3fd466abcd5e8c0fde7d8a
 
 .activity-card-image {
   height: 500px;
@@ -208,12 +217,22 @@ footer {
   right: 0;
   z-index: 1;
   margin-top: 16px;
-  margin-right: 8px;
+  margin-right: -20px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px 0px 0px 10px;
   font-weight: bolder;
+}
+
+.badge button{
+  padding: 6px;
+  font-size: 10px;
+  border-radius: 20px;
+  border: 2px solid rgba(236, 148, 17, 0.705);
+  text-align: center;
+  background: none;
+
 }
 
 .reserve-button {
