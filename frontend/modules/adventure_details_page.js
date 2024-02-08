@@ -34,8 +34,8 @@ function addAdventureDetailsToDOM(adventure) {
   let photosSection = document.getElementById("photo-gallery");
   let content = document.querySelector("#adventure-content");
 
-  name.innerText = adventure.name;
-  subtitle.innerText = adventure.subtitle;
+  name.innerHTML = adventure.name;
+  subtitle.innerHTML = adventure.subtitle;
   
   for(let i in adventure.images){
     let img =  document.createElement("img");

@@ -81,10 +81,10 @@ describe("Adventure Detail Page Tests", function () {
     };
     addAdventureDetailsToDOM(adventure);
     //console.log(document.getElementById("adventure-name").innerHTML);
-    expect(document.getElementById("adventure-name").innerText).toBe(
+    expect(document.getElementById("adventure-name").innerHTML).toBe(
       adventure.name
     );
-    expect(document.getElementById("adventure-subtitle").innerText).toBe(
+    expect(document.getElementById("adventure-subtitle").innerHTML).toBe(
       adventure.subtitle
     );
     expect(document.getElementsByClassName("activity-card-image").length).toBe(
