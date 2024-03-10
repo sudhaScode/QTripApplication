@@ -225,8 +225,8 @@ function generateFilterPillsAndUpdateDOM(filters) {
    */
 
   //console.log(filters)
-  categoryList.forEach((filt) => {
-    list.innerHTML += `<span class="badge "><button name=${filt} onclick="clearPill(event)">${filt} &#x2715;</button></span>`
+  categoryList.forEach((pill) => {
+    list.innerHTML += `<span class="badge "><button name=${pill} onclick="clearPill(event)">${pill} &#x2715;</button></span>`
   })
 
 }
