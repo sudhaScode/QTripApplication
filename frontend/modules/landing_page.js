@@ -19,6 +19,7 @@ async function fetchCities() {
   try {
     const res = await fetch(`${config.backendEndpoint}/cities`);
     let cities = await res.json();
+    console.log(cities, "debug");
     return cities;
   }
   catch (error) {

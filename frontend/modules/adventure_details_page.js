@@ -15,8 +15,10 @@ async function fetchAdventureDetails(adventureId) {
   // 1. Fetch the details of the adventure by making an API call
   try{
     const response = await fetch(`${config.backendEndpoint}/adventures/detail/?adventure=${adventureId}`);
+    
     const data = await response.json();
     //console.log(data);
+    console.log(data, "debug adventure deatil");
     return data;
   }
   catch (error){
@@ -112,7 +114,22 @@ function addBootstrapPhotoGallery(images) {
 function conditionalRenderingOfReservationPanel(adventure) {
   // TODO: MODULE_RESERVATIONS
   // 1. If the adventure is already reserved, display the sold-out message.
-  
+  let {available, costPerHead} = adventure;
+ // console.log(available, "available debug")
+  const reservationPanelAvailableElement = document.getElementById("reservation-panel-available");
+  const reservationPanelSoldOutElement = document.getElementById("reservation-panel-sold-out");
+  const reservationPersonCost = document.getElementById("reservation-person-cost");
+ 
+  if(available){
+    reservationPanelAvailableElement.style.display = "block"
+    reservationPanelSoldOutElement.style.display = "none";
+    reservationPersonCost.innerHTML=costPerHead; 
+  }
+  else{
+    reservationPanelAvailableElement.style.display = "none"
+    reservationPanelSoldOutElement.style.display = "block";  
+
+  }
 
 }
 
@@ -120,20 +137,73 @@ function conditionalRenderingOfReservationPanel(adventure) {
 function calculateReservationCostAndUpdateDOM(adventure, persons) {
   // TODO: MODULE_RESERVATIONS
   // 1. Calculate the cost based on number of persons and update the reservation-cost field
+  const {costPerHead} = adventure;
+
+ // console.log(costPerHead, "reservation-person-cost debug")
+  
+  const reservationCost = document.getElementById("reservation-cost");
+  
+  reservationCost.innerHTML= Number(costPerHead)*Number(persons);
 
 }
 
 //Implementation of reservation form submission
-function captureFormSubmit(adventure) {
+function captureFormSubmit(adven) {
   // TODO: MODULE_RESERVATIONS
   // 1. Capture the query details and make a POST API call using fetch() to make the reservation
   // 2. If the reservation is successful, show an alert with "Success!" and refresh the page. If the reservation fails, just show an alert with "Failed!".
+  
+  const myFormElement = document.getElementById("myForm");
+  myFormElement.addEventListener("submit", async (event)=>{
+    event.preventDefault();
+    let name = myFormElement.elements["name"].value;
+    let date = myFormElement.elements["date"].value;
+    let person = myFormElement.elements["person"].value;
+    let adventure = adven.id;
+    const payload ={
+      name,
+      date,
+      person,
+      adventure,
+    }
+    
+    const URL = `${config.backendEndpoint}/reservations/new`;
+    try{
+    const response = await fetch(URL, {
+      method: "POST",
+      body:JSON.stringify(payload),
+      headers:{
+        "Content-type": "application/json"
+      },
+    });
+    const data = await response.json()
+    if(response.ok){
+      window.alert("Success!")
+      //console.log(data);
+    }
+    else{
+      window.alert("Failed!");
+    }
+  }
+  catch(error){
+    console.log("An error occured")
+  }
+  })
 }
 
 //Implementation of success banner after reservation
 function showBannerIfAlreadyReserved(adventure) {
   // TODO: MODULE_RESERVATIONS
   // 1. If user has already reserved this adventure, show the reserved-banner, else don't
+ const reservedBannerElement = document.getElementById("reserved-banner");
+
+ if(adventure.reserved){
+  reservedBannerElement.style.display = "block";
+ }
+ else{
+  reservedBannerElement.style.display = "none";
+
+ }
 
 }
 

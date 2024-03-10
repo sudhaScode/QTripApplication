@@ -43,6 +43,27 @@ function addAdventureToDOM(adventures) {
   // iterate through the adventures
   adventures.forEach(obj => {
     //console.log(obj)
+    /*
+    let col = document.createElement("div");
+    col.className ="col-6 col-lg-3 mb-4"
+    col.innerHTML =`
+    <a id = ${obj.id} href = detail/?adventure=${obj.id}>
+    
+    <div class="activity-card">
+      <img src=${obj.image} />
+    </div>
+    <div class = "category-banner" id= ${obj.id}>${obj.category}</div>
+    <div class = "info">
+      <ul>
+        <li>${obj.name}</li>
+        <li><span>&#8377;${obj.costPerHead}</span></li>
+      </ul>
+    </div>
+    </a>
+    `
+    row.append(col);
+    */
+    
     let col = document.createElement("div");
     col.setAttribute('class', "col-6 col-lg-3 mb-4")
 
@@ -74,15 +95,15 @@ function addAdventureToDOM(adventures) {
      <li><span>&#8377;${obj.costPerHead}</span></li>
     </ul
     `
-    /*
+      /*
      //detail div
      let name = document.createElement("p");
      name.innerText = `${obj.name}`;
      let price = document.createElement("p")
      price.innerHTML= `<span>&#8377;${obj.costPerHead}</span>`
      textDiv.append(name, price);
- */
-
+     */
+  
     textDiv.innerHTML += `
     <ul>
      <li>Duration</li>
@@ -94,6 +115,7 @@ function addAdventureToDOM(adventures) {
     link.append(div);
     col.append(link);
     row.append(col);
+  
   });
 }
 
@@ -162,7 +184,7 @@ function filterFunction(list, filters) {
   }
   //case3 - filter by both duration and category
   if (filters["category"].length > 0 && filters["duration"]) {
-    console.log("case3")
+    //console.log("case3")
     let splitDuration = filters["duration"].split(" ");
     splitDuration = splitDuration[0].split("-");
    
