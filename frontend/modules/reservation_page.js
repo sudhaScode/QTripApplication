@@ -79,7 +79,7 @@ function addReservationToTable(reservations) {
   <td><b>${id}<b></td>
   <td>${name}</td>
   <td>${adventureName}</td>
-  <td>${person}</td>s
+  <td>${person}</td>
   <td>${formatDate}</td>
   <td>${price}</td>
   <td>${formattedDateTime}</td>
